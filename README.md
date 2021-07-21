@@ -6,7 +6,7 @@
 [![tests](https://github.com/alisterburt/emanjson2imodxf/workflows/tests/badge.svg)](https://github.com/alisterburt/emanjson2imodxf/actions)
 [![codecov](https://codecov.io/gh/alisterburt/emanjson2imodxf/branch/master/graph/badge.svg)](https://codecov.io/gh/alisterburt/emanjson2imodxf)
 
-Convert tilt-series alignments from EMAN2 to IMOD format
+Convert tilt-series alignments from EMAN2 json files to IMOD format xf files.
 
 ```sh
 pip install emanjson2imodxf
