@@ -31,20 +31,22 @@ def emanjson2imodxf(input_json_file: PathLike):
 
 @click.command()
 @click.option(
-    '--input', 'input_json_file',
+    '-i', '--input', 'input_json_file',
+    help='EMAN2 json file',
     type=click.Path(exists=True),
     required=True,
-    prompt=True,
 )
 @click.option(
-    '--output', 'output_xf_file',
+    '-o', '--output', 'output_xf_file',
+    help='IMOD xf file (output)',
     type=click.Path(),
-    required=False,
-    prompt=True,
+    required=True,
 )
-def cli(input_json_file, output_xf_file=None):
+def cli(input_json_file, output_xf_file):
+    """Convert an EMAN2 json file into an IMOD xf file.
+    """
     click.echo(f'Input file: {input_json_file}')
     click.echo(f'Output file: {output_xf_file}')
-    xf = eman2imod(input_json_file)
+    xf = emanjson2imodxf(input_json_file)
     np.savetxt(output_xf_file, xf, fmt='%.6f', delimiter=' ')
     click.echo(f'Success!')
