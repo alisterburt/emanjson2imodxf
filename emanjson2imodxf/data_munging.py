@@ -23,10 +23,10 @@ def read_tlt_params(json_file: PathLike) -> Tuple[np.ndarray]:
 
     Returns
     -------
-    dxy, theta : tuple[np.ndarray]
+    dxy, theta, projection_angles : tuple[np.ndarray]
         shifts and rotation angles from the json file. Shifts are an (n, 2, 1)
         array of dx, dy in pixels. theta is an (n, ) array of rotation angles
-        in radians.
+        in radians. ytilt is an (n, ) array of tilt angles for reconstruction.
     """
     with open(json_file) as f:
         data = json.load(f)
@@ -39,7 +39,9 @@ def read_tlt_params(json_file: PathLike) -> Tuple[np.ndarray]:
     dxy = np.stack((dx, dy), axis=-1).reshape((-1, 2, 1))
     theta = np.deg2rad(tlt_params[:, 2])
 
-    return dxy, theta
+    projection_angles = tlt_params[:, 2]
+
+    return dxy, theta, projection_angles
 
 
 def angle2rotm(theta: np.ndarray) -> np.ndarray:
