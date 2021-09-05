@@ -27,3 +27,4 @@ Options:
 ## Changelog
 - v0.0.1 produce .xf file
 - v0.0.2 produce .xf and corresponding .tlt file, API change
+- v0.0.3 fix a bug in the output .tlt file (thanks @alexjnoble)
