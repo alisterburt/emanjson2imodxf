@@ -9,8 +9,10 @@ from .data_munging import read_tlt_params, angle2rotm
 def emanjson2imodxf(input_json_file: PathLike):
     # Get useful info from EMAN json file
     # shifts in px, theta in radians, y tilt in degrees
-    dxy_eman, theta, tilt_angles = read_tlt_params(json_file=input_json_file)
-    rotation_matrices = angle2rotm(theta)
+    dxy_eman, theta, tilt_angles, tilt_azimuth = read_tlt_params(
+        json_file=input_json_file
+    )
+    rotation_matrices = angle2rotm(theta + tilt_azimuth)
 
     # EMAN translates then rotates, IMOD rotates then translates
     # R(x+dx, y+dy) = R(x, y) + R(dx, dy)

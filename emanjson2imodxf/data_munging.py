@@ -41,8 +41,9 @@ def read_tlt_params(json_file: PathLike) -> Tuple[np.ndarray]:
     theta = np.deg2rad(tlt_params[:, 2])
 
     projection_angles = tlt_params[:, 3]
+    tilt_azimuth = tlt_params[:, 4]
 
-    return dxy, theta, projection_angles
+    return dxy, theta, projection_angles, tilt_azimuth
 
 
 def angle2rotm(theta: np.ndarray) -> np.ndarray:
